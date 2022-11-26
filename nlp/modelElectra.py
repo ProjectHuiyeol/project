@@ -1,5 +1,4 @@
 import os
-import re
 import pickle
 import numpy as np
 import tensorflow as tf
@@ -9,9 +8,9 @@ tf.random.set_seed(42)
 np.random.seed(42)
 
 CLASS_NUMBER = 6
-BERT_CKPT = './project/nlp/data_out/'
-DATA_IN_PATH = './project/metadata/'
-DATA_OUT_PATH = './project/nlp/data_out/'
+BERT_CKPT = '../project/nlp/data_out/'
+DATA_IN_PATH = '../project/metadata/'
+DATA_OUT_PATH = '../project/nlp/data_out/'
 MAX_LEN = 120
 
 class TFElectraClassifier(tf.keras.Model):
@@ -42,6 +41,9 @@ cls_model.compile(optimizer=optimizer, loss=loss, metrics=[metric])
 
 with open(DATA_OUT_PATH+'bert_tokenizer.pickle', 'rb') as handle:
     loaded_tokenizer = pickle.load(handle)
+
+with open(DATA_OUT_PATH+'encoder.pickle', 'rb') as handle:
+    le = pickle.load(handle)
 
 def bert_tokenizer(sent, MAX_LEN):
     encoded_dict = loaded_tokenizer.encode_plus(
@@ -109,3 +111,7 @@ def predict(lyrics):
     prediction = cls_model.predict(input_ids)
 
     return prediction
+
+def transform(array):
+    result = le.inverse_transform(array)
+    return result

@@ -7,7 +7,7 @@ from transformers import TFElectraModel
 tf.random.set_seed(42)
 np.random.seed(42)
 
-CLASS_NUMBER = 6
+CLASS_NUMBER = 8
 BERT_CKPT = '../project/nlp/data_out/'
 DATA_IN_PATH = '../project/metadata/'
 DATA_OUT_PATH = '../project/nlp/data_out/'

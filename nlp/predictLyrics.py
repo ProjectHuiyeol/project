@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import modelElectra
 
-CLASS_NUMBER = 8
+CLASS_NUMBER = 6
 BERT_CKPT = '../project/nlp/data_out/'
 DATA_IN_PATH = '../project/metadata/'
 DATA_OUT_PATH = '../project/nlp/data_out/'

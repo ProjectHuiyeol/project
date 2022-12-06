@@ -7,11 +7,12 @@ from transformers import TFElectraModel
 tf.random.set_seed(42)
 np.random.seed(42)
 
-CLASS_NUMBER = 8
+CLASS_NUMBER = 6
 BERT_CKPT = '../project/nlp/data_out/'
 DATA_IN_PATH = '../project/metadata/'
 DATA_OUT_PATH = '../project/nlp/data_out/'
-MAX_LEN = 120
+MAX_LEN = 40 #95% - >60개   90% ->40개
+MAX_WORD = 20
 
 class TFElectraClassifier(tf.keras.Model):
     def __init__(self, model_name, dir_path, num_class):
@@ -64,7 +65,7 @@ def bert_tokenizer(sent, MAX_LEN):
 a, b, c = bert_tokenizer('안녕하세요', MAX_LEN)
 cls_model.call((np.array(a).reshape(1,-1), np.array(b).reshape(1,-1), np.array(c).reshape(1,-1)))
 cls_model.built = True
-cls_model.load_weights(DATA_OUT_PATH+'weights.h5')
+cls_model.load_weights(DATA_OUT_PATH+'tf2_electra_plutchik_hs_10.h5')
 
 def preprocessing(x):
     temp = x.split('\n')
@@ -74,12 +75,12 @@ def preprocessing(x):
 def slicing(x):
     x = x.split()
     res = []
-    for i in range(0, len(x)+1, MAX_LEN):
-        if len(x)-i < MAX_LEN:
+    for i in range(0, len(x)+1, MAX_WORD):
+        if len(x)-i-MAX_WORD < MAX_WORD//2:
             temp = x[i:]
             res.append(temp)
             break
-        temp = x[i:i+MAX_LEN]
+        temp = x[i:i+MAX_WORD]
         res.append(temp)
     return res
 
@@ -113,5 +114,5 @@ def predict(lyrics):
     return prediction
 
 def transform(array):
-    result = le.inverse_transform(array)
+    result = le.inverse_transform([np.argmax(array)])
     return result

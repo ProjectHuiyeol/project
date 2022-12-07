@@ -20,8 +20,8 @@ import numpy as np
 import pandas as pd
 from modelNlp import *
 
-lyrics = pd.read_csv(DATA_IN_PATH+'test.csv')
+lyrics = pd.read_csv(DATA_IN_PATH+'concatSongs.csv')
 model = EmotionClassfier(le,neg_le)
 model.call()
 data = model.predictAll(lyrics)
-data.to_csv(DATA_IN_PATH+'predictTest.csv', encoding='utf-8-sig')
+data.to_csv(DATA_IN_PATH+'predictTotal.csv', encoding='utf-8-sig')

@@ -15,6 +15,8 @@ pandas==1.3.5
 tqdm==4.64.1
 tensorflow==2.10.0
 transformers==4.24.0
+scikit-learn==1.0.2
+torch==1.13.0+cu117
 
 """
 
@@ -83,7 +85,7 @@ class TFElectraClassifier(tf.keras.Model):
         logits = self.classifier(last_hidden_state)
 
         return logits
-        
+
 class EmotionClassfier():
     def __init__(self,encoder1, encoder2):
 
@@ -191,7 +193,7 @@ class EmotionClassfier():
 
     def predictAll(self, lyrics):
         # 데이터 입력
-        data = lyrics[['SONG_ID', 'SONG_TITLE', 'LYRICS']]
+        data = lyrics[['SONG_ID', 'LYRICS']]
         song_ids = lyrics['SONG_ID']
         # 3분류
         pred = dict()
@@ -257,3 +259,6 @@ class EmotionClassfier():
         # 중립 제거
         data = data.drop(data[data['senti']=='neut'].index)
         return data
+# 모델 실행
+model = EmotionClassfier(le,neg_le)
+model.call()

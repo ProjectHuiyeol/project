@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>HUIYEOL</title>
+        <link rel="icon" type="image/x-icon" href="../static/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../static/assets/css/styles.css" rel="stylesheet" />
+        <!-- <link href="css/dnd_style.css" rel="stylesheet" /> -->
+    </head>
+    <body class="pt-5"></body>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand fw-bold"  href="index.html">Start Bootstrap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Download</a></li>
+                    </ul>
+                    <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                        <span class="d-flex align-items-center">
+                            <i class="bi-chat-text-fill me-2"></i>
+                            <span class="small">Send Feedback</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ======= All music Section ======= -->
+        <div class="container py-4" style = 'margin: auto;'>
+            <!-- <header class="pb-3 mb-4 border-bottom" >
+              <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+                <span class="fs-4">Jumbotron example</span>
+              </a>
+            </header> -->
+        
+            <div class="p-5 mb-4 bg-light rounded-3" style="text-align: center;">
+              <div class="container-fluid py-5">
+                <h2 class="display-5 fw-bold">{{pl_name}}의 Playlist</h2>
+                <p class="col-md-8 fs-4" type = "hidden">플레이 리스트</p>
+                <div class="tracklist">
+                    <table border = '1'>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="song">
+                                    <span class="blind">곡명</span>
+                                </th>
+        
+        
+                                <th scope="col" class="lyrics">
+                                    <span class="blind">가사</span>
+                                </th>
+        
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for el in song_custom_list %}
+                            <tr class="">
+                                
+                                <td class="song">
+                                    <div class="title_badge_wrap">
+                                        <span class="inner_cell">
+        
+                                    </div>
+                                    <div title="OSHUN" class="artist_sub">
+                                        <span>
+                                            <span>
+                                                <!-- <a href="/artist/3182362" class="link_artist">
+                                                    <span class="text">OSHUN</span>
+                                                </a> -->
+                                                {{el[0]}}
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <!---->
+                                </td>
+            
+                                <td class="lyrics">
+                                    <a href="#" role="button" class="btn_lyrics">
+                                        <span class="blind">가사 보기</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+              </div>
+            </div>
+        
+            <div class="row align-items-md-stretch">
+              <div class="col-md-12">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                  <h2>플레이리스트 음원/가사 옥타그램</h2>
+                  <p>레이다차트에 대한 간단한 설명</p>
+                  <div class="tracklist">
+                    <table border = '1'>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="song">
+                                    <span class="blind">음원</span>
+                                </th>
+                                <th scope="col" class="lyrics">
+                                    <span class="blind">가사</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="">  
+                                <td class="song">
+                                    <div class="title_badge_wrap">
+                                        <span class="inner_cell">
+                                    </div>
+                                    <div class="song_name">
+                                        <div style = "width : 100%; height:100%">
+                                            <!-- <div class="card-header">Radar chart</div>
+                                            <div class="card-body" style="height: absolute"> -->
+                                            <canvas id="radar-chart1" width="500%" height="500%" ></canvas>
+                                        </div>
+                                    </div>
+                                </td>
+            
+                                <td class="lyrics">
+                                    <div style = "width : 100%; height:100%">
+                                        <!-- <div class="card-header">Radar chart</div>
+                                        <div class="card-body" style="height: absolute"> -->
+                                        <canvas id="radar-chart2" width="500%" height="500%" ></canvas>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+              </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    {% for i in range(4) %}
+                        <input type = "hidden" id = "sound_sentiment{{i}}" value="{{ sound_sentiments[i] }}"></input>
+                    {% endfor %}
+                    {% for i in range(6) %}
+                        <input type = "hidden" id = "lyrics_sentiment{{i}}" value="{{ lyrics_sentiments[i] }}"></input>
+                    {% endfor %}
+                    <h2>플레이리스트 색</h2>
+                  <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+                  <!-- <button class="btn btn-outline-secondary" style = "width: 100%; height: 100%;" type="button">Example button</button> -->
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                  <h2>유사한 곡 추천</h2>
+                  <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
+                  <button id="Analyze_song_btn">유사 곡 찾기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+      <!-- End All music Section -->
+    <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+    <script src="../static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+    <script src="../static/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="../static/assets/vendor/aos/aos.js"></script>
+    <!-- Template Main JS File -->
+    <script src="../static/assets/js/main.js"></script>
+    <script src="../static/assets/js/radar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="../static/assets/js/iframe.js"></script>
+  </body>
+</html>

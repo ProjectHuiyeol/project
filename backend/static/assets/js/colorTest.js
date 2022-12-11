@@ -26,7 +26,7 @@ const color = [
   [255, 149, 149],
   [128, 64, 0]
 ]
-color_id = [
+const color_id = [
   'mint',
   'black',
   'white',
@@ -85,9 +85,9 @@ const calcScore = () => {
   let green = 0
   let blue = 0
   for (let i = 0; i < ENDPOINT; i++) {
-    red += qnaList[i].a[select[i]].score[0]
-    green += qnaList[i].a[select[i]].score[1]
-    blue += qnaList[i].a[select[i]].score[2]
+    red += qnaList[i].a[select[i]].score[0] / 100
+    green += qnaList[i].a[select[i]].score[1] / 100
+    blue += qnaList[i].a[select[i]].score[2] / 100
     // console.log(point)
   }
   // let point = 0
@@ -95,24 +95,49 @@ const calcScore = () => {
   //   point += qnaList[i].a[select[i]].score
   //   // console.log(point)
   // }
-  return red, green, blue
+  console.log(red, green, blue)
+  red *= 255
+  green *= 255
+  blue *= 255
+  const point = [red, green, blue]
+  // console.log(point)
+  return point
 }
 
 const sortResult = (point) => {
   let num = 0
-  if (point <= 20) {
-    num = 0
-  } else if (point <= 30) {
-    num = 1
-  } else if (point <= 40) {
-    num = 2
-  } else if (point <= 50) {
-    num = 3
-  } else if (point <= 60) {
-    num = 4
-  } else {
-    num = 5
+  let property = []
+  for (let i = 0; i < color_id.length; i++) {
+    let r = 0
+    let g = 0
+    let b = 0
+    r = Math.sqrt(Math.pow(color[i][0] - point[0], 2))
+    g = Math.sqrt(Math.pow(color[i][1] - point[1], 2))
+    b = Math.sqrt(Math.pow(color[i][2] - point[2], 2))
+    // property.push(r + g + b)
   }
+  let colorMin = Math.min(...property)
+  // console.log(property, colorMin)
+  for (let j = 0; j < property.length; j++) {
+    if (property[j] === colorMin) {
+      num = j
+      break
+    }
+    // console.log(num)
+  }
+  // if (point <= 20) {
+  //   num = 0
+  // } else if (point <= 30) {
+  //   num = 1
+  // } else if (point <= 40) {
+  //   num = 2
+  // } else if (point <= 50) {
+  //   num = 3
+  // } else if (point <= 60) {
+  //   num = 4
+  // } else {
+  //   num = 5
+  // }
 
   return num
 }

@@ -1,54 +1,79 @@
 <html>
-    <head>
-        <!-- <link href="../static/assets/css/similary.css" rel="stylesheet" /> -->
-
-    </head>
-    <body>
-        <style>
-        *, ::before, ::after { box-sizing: border-box; }
-        html, body { height: 100%; }
-        body { margin: 0; }
-        .slide { position: relative; height: 100%; overflow: hidden; }
-        .slide .slide-content > div { display: flex; }
-        .slide .slide-content .slide-item { flex: 0 0 100%; }
-        </style>
-        <div class="slide" >
-            <div class="slide-content" >
-                <div>
-                    <div class="slide-item">
-                        <table
-                            border="1"
-                            width="100%"
-                            height="450"
-                            cellspacing="5">
-                            <caption>유사곡 추천</caption>
-                            <thead>
-                                <tr align="center" bgcolor="white">
-                                    <th>노래 제목</th>
-                                    <th>노래 색</th>
-                                    <th>플레이!</th>
-                                </tr>
-                            </thead>
-                            <!-- for돌려서 하는 부분이 될듯 -->
-                            <tbody>
-                                {% for i, song in enumerate(similar_songs) %}
-                                <tr align="center" bgcolor="white">
-                                    <td>{{song[0]}}</td>
-                                    <td style ="background-color: rgb({{similar_colors[i][0][0]}},{{similar_colors[i][0][1]}}, {{similar_colors[i][0][2]}});"></td>
-                                    <td>
-                                        <audio controls>
-                                            <source src="{{url_for('static', filename='music/26378.mp3')}}" type="audio/mpeg">
-                                        </audio>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+  <head>
+    <!-- <link href="../static/assets/css/similary.css" rel="stylesheet" /> -->
+    <link href="../static/assets/css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <style>
+      *,
+      ::before,
+      ::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+      }
+      .slide {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+      }
+      .slide .slide-content > div {
+        display: flex;
+        jsu
+      }
+      .slide .slide-content .slide-item {
+        flex: 0 0 100%;
+      }
+    </style>
+    <div class="slide" style="justify-content: center">
+      <div class="slide-content">
+        <h2 style="text-align: center">유사곡 추천</h2>
+        <div class="slide-item" style="text-align: center">
+          <!-- <h1 style="text-align: center; display: block;" >유사곡 추천</h1><br> -->
+          <table
+            style="
+              border: 2px solid;
+              border-collapse: collapse;
+              width: 50%;
+              height: 100%;
+            "
+          >
+            <thead>
+              <tr align="center" bgcolor="white">
+                <th>노래 제목</th>
+                <th>노래 색</th>
+                <th>플레이!</th>
+              </tr>
+            </thead>
+            <!-- for돌려서 하는 부분이 될듯 -->
+            <tbody>
+              {% for i, song in enumerate(similar_songs) %}
+              <tr align="center" bgcolor="white">
+                <td>{{song[0]}}</td>
+                <td
+                  style="background-color: rgb({{similar_colors[i][0][0]}},{{similar_colors[i][0][1]}}, {{similar_colors[i][0][2]}});"
+                ></td>
+                <td>
+                  <audio controls>
+                    <source
+                      src="{{url_for('static', filename='music/'+str(check_fns[i])+'.mp3')}}"
+                      type="audio/mpeg"
+                    />
+                  </audio>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-        <!-- <script>
+      </div>
+    </div>
+    <!-- <script>
             !function() {
                 const slide = document.querySelector('.slide');
                 const slideContent = slide.querySelector('.slide-content > div');
@@ -59,8 +84,8 @@
                 };
             }();
         </script> -->
-    </body>
-    <!-- <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
+  </body>
+  <!-- <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
     <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
     <script src="../static/assets/vendor/php-email-form/validate.js"></script>
@@ -69,9 +94,9 @@
     <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="../static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="../static/assets/vendor/aos/aos.js"></script> -->
-    <!-- <script src="../static/assets/js/loading.js"></script> -->
-    <!-- Template Main JS File -->
-    <!-- <script src="../static/assets/js/main.js"></script>
+  <!-- <script src="../static/assets/js/loading.js"></script> -->
+  <!-- Template Main JS File -->
+  <!-- <script src="../static/assets/js/main.js"></script>
     <script src="../static/assets/js/radar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="../static/assets/js/iframe.js"></script> -->

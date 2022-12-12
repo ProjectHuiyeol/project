@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <!-- <link href="../static/assets/css/similary.css" rel="stylesheet" /> -->
+        <!-- <link href="../static/assets/css/styles.css" rel="stylesheet" /> -->
+    </head>
+    <body>
+        <style>
+        *, ::before, ::after { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body { margin: 0; }
+        .slide { height: 100%; overflow: hidden; margin: auto;}
+        .slide .slide-content > div { display: flex;}
+        .slide .slide-content .slide-item { flex: 0 0 100%; }
+        </style>
+        <div class="slide" >
+            <div class="slide-content" >
+                <div class="slide-item">
+                    <h1 style="text-align: center;">유사곡 추천</h1>
+                    <table style="border : 2px solid;
+                    border-collapse :collapse;
+                    width:50%;
+                    height:100%;
+                    text-align: center;">
+                        <thead>
+                            <tr align="center" bgcolor="white">
+                                <th>노래 제목</th>
+                                <th>노래 색</th>
+                                <th>플레이!</th>
+                            </tr>
+                        </thead>
+                        <!-- for돌려서 하는 부분이 될듯 -->
+                        <tbody>
+                            {% for i, song in enumerate(similar_songs) %}
+                            <tr align="center" bgcolor="white">
+                                <td>{{song[0]}}</td>
+                                <td style ="background-color: rgb({{similar_colors[i][0][0]}},{{similar_colors[i][0][1]}}, {{similar_colors[i][0][2]}});"></td>
+                                <td>
+                                    <audio controls>
+                                        <source src="{{url_for('static', filename='music/'+str(check_fns[i])+'.mp3')}}" type="audio/mpeg">
+                                    </audio>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

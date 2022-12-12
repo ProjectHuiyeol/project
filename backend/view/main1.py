@@ -79,7 +79,7 @@ def song_info():
 def similary(check_fns):
     check_fns = check_fns[1:-1]
     check_fns = list(map(lambda x : int(x.strip()) ,check_fns.split(',')))
-    # print(check_fns)
+    print(check_fns)
     similar_songs = Song.get_custom_song_titles(check_fns)
     sound_sentiments = Song.get_sound_sentiment(check_fns)
     lyrics_sentiments = Song.get_lyrics_sentiment(check_fns)
@@ -88,9 +88,29 @@ def similary(check_fns):
         similar_colors.append(make_color(lyrics_sentiments[i],sound_sentiments[i])[1])
     # print(similar_songs, similar_colors)
     return render_template('similary.html',
+                            check_fns= check_fns,
                             similar_songs=similar_songs,
                             similar_colors=similar_colors,
-                            enumerate = enumerate)
+                            enumerate = enumerate,
+                            str = str)
+
+@main1.route('/psych_similar',methods = ['GET','POST'] )
+def psych_similar():
+    psych_similar = request.args.get('colorvalue')
+    psych_similar_lst = list(map(lambda x : int(x.strip()), psych_similar.split(',')))
+    psych_songs_id = find_song_from_test(psych_similar_lst, counts=5)
+    psych_songs_title = Song.get_custom_song_titles(psych_songs_id)
+    sound_sentiments = Song.get_sound_sentiment(psych_songs_id)
+    lyrics_sentiments = Song.get_lyrics_sentiment(psych_songs_id)
+    similar_colors = []
+    for i in range(len(sound_sentiments)):
+        similar_colors.append(make_color(lyrics_sentiments[i],sound_sentiments[i])[1])
+    return render_template('psych_similar.html',
+                            check_fns= psych_songs_id,
+                            similar_songs=psych_songs_title,
+                            similar_colors=similar_colors,
+                            enumerate = enumerate,
+                            str = str)
 
 @main1.route('/lyrics',methods = ['GET','POST'] )
 def get_lyrics():

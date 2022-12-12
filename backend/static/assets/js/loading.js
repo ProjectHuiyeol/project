@@ -1,7 +1,7 @@
 !(function($){
     $(document).ready(function(){
         LoadingWithMask('../img/Spinner.gif');
-        setTimeout(closeLoadingWithMask(),3000);
+        setTimeout(closeLoadingWithMask(),600000);
     });
     function LoadingWithMask(gif){
         // 화면의 높이와 너비 구하기

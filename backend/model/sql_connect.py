@@ -15,7 +15,7 @@ MYSQL_CONN = pymysql.connect(
     host=MYSQL_HOST,
     port=3306,
     user='huiyeol',
-    passwd='gmlduf0000',
+    passwd='',
     db='song_db',
     charset='utf8'
 )

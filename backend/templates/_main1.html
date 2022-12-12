@@ -23,15 +23,15 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
             <div class="container px-5">
-                <a class="navbar-brand fw-bold"  href="{{url_for('main1.main1_')}}">HUIYEOL</a>
+                <a class="navbar-brand fw-bold"  href="{{url_for('mainlogo.main')}}">HUIYEOL</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="bi-list"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Services</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#download">About</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="../mainlogo/#about">Services</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="../mainlogo/#function">About</a></li>
                     </ul>
                     <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
@@ -42,55 +42,45 @@
                 </div>
             </div>
         </nav>
-      <section style="align-items: center;">
-      <div class="container" style="width: 1295px; padding-top: 80px;">
-        <div class="row">
-          <div class="col-md-4">
-            <h1 style = "text-align: center;">전체 음원</h1>
-            <div class = "sub_container" style="overflow: auto; width:350px;height:500px; border-radius: 10px;">
-              <div class="column_1st_tag" style="background-color: #72b6f2;">
-                {% for song in all_songlist %}
-                  <div class="list-group-item" draggable="true" name = "songlist">{{song[1]}}</div>
-                {% endfor %}
-              </div>
+      <section>
+      <div class="container" style="margin: auto;">
+        <div>
+          <h1 style = "text-align: center;">전체 음원</h1>
+          <div class = "sub_container" style="overflow: auto; width:350px;height:500px;">
+            <div class="column_1st_tag">
+              {% for song in all_songlist %}
+                <div class="list-group-item" draggable="true" name = "songlist">{{song[1]}}</div>
+              {% endfor %}
             </div>
-          </div>
-          <div class="col-md-4">
-            <h1 style = "text-align: center;">기존 곡</h1>
-            <div class = "sub_container" style="overflow: auto;width:350px; height:500px;">
-              <div class="column_2nd_tag">
-                {% if song_title_list %}
-                  {% for song_title in song_title_list %}
-                    <div class="list-group-item" draggable="true">{{song_title[0]}}</div>
-                  {% endfor %}
-                {% else %}
-                  <div class = "list-group-item" draggable="false">등록된 곡이 없습니다.</div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4" style="text-align: center;">
-            <form action = "{{url_for('main1.song_info', songlist=song_list)}}" method = 'GET'>
-              <input type="hidden" id="song_names" name = "song_names">{{song_list}}</input>
-              <input type="hidden" id ="playlist_name" name = "pl_name" value="{{playlist_name}}"></input>
-              <div class="row">
-                <div>
-                  <h1 style = "text-align: center;">my playlist</h1>
-                  <div class = "sub_container" style="overflow:  auto; width:350px;height:500px;">
-                    <div class="column_playlist">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-8">
-                  <a href="{{url_for('mainlogo.delete_playlist',playlist_name=playlist_name)}}"><button type = "button" class = 'btn btn-outline-primary' style="float: right;">삭제</button></a>
-                  <button type="submit" class = 'btn btn-outline-primary' id = "add_playlist_btn" style="float: right;">추가</button>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
+        <div>
+          <h1 style = "text-align: center;">기존 곡</h1>
+          <div class = "sub_container" style="overflow: auto;width:350px; height:500px;">
+            <div class="column_2nd_tag">
+              {% if song_title_list %}
+                {% for song_title in song_title_list %}
+                  <div class="list-group-item" draggable="true">{{song_title[0]}}</div>
+                {% endfor %}
+              {% else %}
+                <div class = "list-group-item" draggable="false">등록된 곡이 없습니다.</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      <form action = "{{url_for('main1.song_info', songlist=song_list)}}" method = 'GET'>
+        <input type="hidden" id="song_names" name = "song_names">{{song_list}}</input>
+        <input type="hidden" id ="playlist_name" name = "pl_name" value="{{playlist_name}}"></input>
+        <div>
+          <h1 style = "text-align: center;">my playlist</h1>  
+          <div class = "sub_container" style="overflow:  auto; width:350px;height:500px;">
+            <div class="column_playlist">
+            </div>
+          </div>
+            <a href="{{url_for('mainlogo.delete_playlist',playlist_name=playlist_name)}}"><button type = "button" class = 'btn btn-outline-primary' style="float: right;">삭제</button></a>
+            <button type="submit" class = 'btn btn-outline-primary' id = "add_playlist_btn" style="float: right;">추가</button>
+          </div>
+      </form>
      </div>
     </section>
       <!-- End All music Section -->

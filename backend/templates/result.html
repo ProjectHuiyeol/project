@@ -30,8 +30,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="./main1#about">Services</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="./main1/#function">About</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="../mainlogo/#about">Services</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="../mainlogo/#function">About</a></li>
                     </ul>
                     <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
@@ -55,7 +55,6 @@
             <div class="p-5 mb-4 bg-light rounded-3" style="text-align: center;">
               <div class="container-fluid py-5">
                 <h2 class="display-5 fw-bold">{{pl_name}}의 Playlist</h2>
-                <p class="col-md-8 fs-4" type = "hidden">목록</p>
                 <div class="tracklist">
                     <table border = '1'>
                         <thead>
@@ -157,8 +156,8 @@
         <div class="col-md-6" >
                 <div class="h-100 p-5 border rounded-3" style="background-color: rgb({{playlist_color[1][0][0]}},{{playlist_color[1][0][1]}},{{playlist_color[1][0][2]}});">
                     <h2>플레이리스트 색</h2>
-                    <div >{{playlist_color[0]}}</div>
-                  <p>색에 대한 설명</p>
+                    <div ><h3>{{playlist_color[0]}}</h3></div>
+                  <p>{{playlist_color[2]}}</p>
                 </div>
               </div>
               <div class="col-md-6">
@@ -175,7 +174,7 @@
                 <style>
                 #similarlyIFrame { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); }
                 /* 이부분이없을시 밑으로 바로생김  중간으로 보내는 부분 */
-                #similarlyIFrame .iframe-content { position: relative; width: 200%; height: 150%; max-width: 400px; max-height: 500px; background-color: #fff; box-shadow: 0 0 10px #333; }
+                #similarlyIFrame .iframe-content { position: relative; width: 100%; height: 150%; max-width: 50%; max-height: 400px; background-color: #fff; box-shadow: 0 0 10px #333; }
                 #similarlyIFrame iframe { width: 200%; height: 150%; }  
                 /* 이거 두줄은 잘려서 나오는 부분 */
                 #similarlyIFrame .close-btn { position: absolute; bottom: 100%; right: 0; font: inherit; border: none; padding: 5px 0; color: #fff; background-color: transparent; }

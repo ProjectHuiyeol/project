@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="../static/assets/css/calc.css">
   <link rel="stylesheet" href="../static/assets/css/result.css">
 </head>
-<form action = "/main1" method="GET">
+
 <body>
   <div id="wrap">
     <header id="header">
@@ -90,9 +90,9 @@
     <section id="result" class="container">
       <div id="score-box">
         <div class="p title"></div>
-        <input class="point" name = 'playlist_point' type='hidden'/>
-        <div class="pin"></div>
-        <div class="score-bar"></div>
+        
+        <!-- <div class="pin"></div>
+        <div class="score-bar"></div> -->
       </div>
       <div id="desc-box">
         <div class="art"></div>
@@ -101,28 +101,16 @@
       </div>
       <hr>
       <div class="caution">
-        <p>
-          사람은 서로 조금씩 달라서 6가지 이미지에 꼭 맞기는 어렵습니다.
-          결과가 조금 맞지 않더라도 이런 면이 있음을 알고 강점에 주목해 보세요.
-          좋은 평판은 어느새 당신의 단짝이 되어 있을 겁니다!<br><br>
-          테스트가 재밌었다면
-        </p>
-        <p>
-          음악에 색을 입히러 가볼까요?
-          
-          <button type = "submit" data-aos="fade-up" class="btn-get-started scrollto" id = "go_main1"> GO </button>
-        </p>
-      </div>
-      <hr>
-      <div class="caution">
-        <p>
-          이 테스트는 해외 웹사이트에 게재된 이미지 테스트를 한국어로 번역한 것입니다.<br>(원본 아래 참고)<br>
-        </p>
+        <form action = "{{url_for('main1.psych_similar')}}" target="_blank" method="GET">
+          <input class="point" name = 'playlist_point' type='hidden'/>
+          <input class="colorvalue" name = "colorvalue" type="hidden"/>
+          <button class = "go-origin btn" id="similary_song_find">유사 곡 찾기</button>
+        </form>
       </div>
       <hr>
       <button class="go-origin btn">
-        <a href="https://www.personalityquiz.net/profiles/impressions.html" target="_blank" title="출처 영문 웹사이트">
-          출처 영문 웹사이트 보기
+        <a href="{{url_for('mainlogo.main')}}">
+          메인으로 돌아가기
         </a>
       </button>
     </section>
@@ -140,6 +128,7 @@
     </footer>
   </div>
   
+  
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
   <script src="../static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
@@ -152,12 +141,10 @@
   <script src="../static/assets/vendor/aos/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script src="../static/assets/js/darkmode.js"></script>
-  <!-- <script src="../static/assets/js/data.js"></script>
-  <script src="../static/assets/js/psych_test.js"></script> -->
   <script src="../static/assets/js/colorData.js"></script>
   <script src="../static/assets/js/colorTest.js"></script>
   <script src="../static/assets/js/main.js"></script>
 
 </body>
-</form>
+
 </html>

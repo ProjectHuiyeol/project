@@ -34,6 +34,7 @@ def main2_():
 
 @mainlogo.route('/delete<playlist_name>')
 def delete_playlist(playlist_name):
+    
     Playlist.delete_playlist(playlist_name)
     pl_list = Playlist.call_playlist()
     return render_template('index.html',pl_list = pl_list)

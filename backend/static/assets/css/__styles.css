@@ -418,32 +418,17 @@ select:disabled {
   width: 250px;
   height: 200px;
   margin: auto;
-  border-radius: 10px;
-}
-
-.sub_container::-webkit-scrollbar {
-  width: 6px;
-  background: aliceblue;
-}
-
-.sub_container::-webkit-scrollbar-thumb {
-  height: 20%;
-  background: #217af4;
-  border-radius: 10px;
-}
-
-.sub_container::-webkit-scrollbar-track {
-  background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
 }
 
 .column_1st_tag,
 .column_2nd_tag,
 .column_playlist {
   flex-basis: 20%;
-  background: #72b6f2;
+  background: #ddd;
   min-height: 70vh;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 .trash_can {
   flex-basis: 20%;
@@ -459,11 +444,9 @@ select:disabled {
 }
 .list-group-item {
   background: #fff;
-  min-height: 60px;
   margin: 20px;
   padding: 20px;
-  border-radius: 10px;
-  line-height: 42px;
+  border-radius: 5px;
   cursor: pointer;
 }
 button,
@@ -12048,14 +12031,11 @@ section.cta {
   background-position: center;
   background-size: cover;
   vertical-align: middle;
-  text-align: center;
-  justify-content: center;
 }
 section.cta .cta-content {
   position: relative;
   z-index: 1;
   text-align: center;
-  justify-content: center;
 }
 section.cta:before {
   content: '';
@@ -12064,8 +12044,7 @@ section.cta:before {
   left: 0;
   width: 100%;
   height: 100%;
-  justify-content: center;
-  background: aliceblue;
+  background: rgba(114, 182, 242, 0.3);
 }
 
 .icon-feature {
@@ -12184,7 +12163,7 @@ footer a:focus {
 }
 
 .masthead {
-  background-color: #2893ef;
+  background-color: #f8f9fa;
   padding-top: 9.5rem;
   padding-bottom: 5rem;
 }
@@ -12277,7 +12256,6 @@ table {
 }
 th,
 td {
-  text-align: center;
   padding: 10px;
   /* border-bottom: 1px solid #2893ef; */
 }
@@ -12313,8 +12291,8 @@ td {
 
 .btn-12 {
   position: relative;
-  right: 12.5px;
-  bottom: 15px;
+  right: 20px;
+  bottom: 20px;
   border: none;
   width: 200px;
   height: 50px;
@@ -12379,25 +12357,4 @@ td {
 .warning {
   color: rgb(231, 20, 20, 0.8);
   font-weight: bold;
-}
-
-.outer-slide {
-  width: 1300px;
-  height: auto;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
-
-.inner-list {
-  display: flex;
-  transition: 0.3s ease-out;
-  height: 100%;
-}
-
-.inner-slide {
-  padding: 0 16px;
-}
-
-.button-list {
-  text-align: center;
 }

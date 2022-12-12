@@ -1,204 +1,163 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
-    />
 
-    <meta name="author" content="Dain Kim" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 
-    <meta
-      name="keywords"
-      content="이미지 테스트, 나를 알아보는 11가지 질문, 10-things-test, 3분이미지테스트, 이미지테스트"
-    />
-    <meta
-      name="description"
-      content="이미지 테스트: 나를 알아보는 11가지 질문"
-    />
+  <meta name="author" content="Dain Kim">
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="나를 알아보는 11가지 질문" />
-    <meta
-      property="og:description"
-      content="사람들이 보는 나는 어떤 이미지일까?"
-    />
-    <meta property="og:image" content="../static/assets/img/og-logo.jpg" />
-    <meta
-      property="og:url"
-      content="https://dev-dain.github.io/10-things-test/"
-    />
+  <meta name="keywords" content="이미지 테스트, 나를 알아보는 11가지 질문, 10-things-test, 3분이미지테스트, 이미지테스트">
+  <meta name="description" content="이미지 테스트: 나를 알아보는 11가지 질문">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="나를 알아보는 11가지 질문">
+  <meta property="og:description" content="사람들이 보는 나는 어떤 이미지일까?">
+  <meta property="og:image" content="../static/assets/img/og-logo.jpg">
+  <meta property="og:url" content="https://dev-dain.github.io/10-things-test/">
 
-    <link
-      rel="shortcut icon"
-      type="text/css"
-      href="../static/assets/img/favicon.png"
-    />
-    <link
-      rel="appel-touch-icon-precomposed"
-      href="../static/assets/img/favicon.png"
-    />
-    <title>나를 알아보는 10가지 질문</title>
-    <link rel="stylesheet" href="../static/assets/css/reset.css" />
-    <link rel="stylesheet" href="../static/assets/css/animation.css" />
-    <link rel="stylesheet" href="../static/assets/css/main.css" />
-    <link rel="stylesheet" href="../static/assets/css/header+footer.css" />
-    <link rel="stylesheet" href="../static/assets/css/welcome.css" />
-    <link rel="stylesheet" href="../static/assets/css/qna.css" />
-    <link rel="stylesheet" href="../static/assets/css/calc.css" />
-    <link rel="stylesheet" href="../static/assets/css/result.css" />
-  </head>
-  <form action="/main1" method="GET">
-    <body>
-      <div id="wrap">
-        <header id="header">
-          <button class="logo head" onclick="javascript:switchMode()"></button>
-        </header>
-        <section id="welcome" class="container">
-          <div id="title-box">
-            <h1 class="title">
-              10 Things<br />
-              I Know About You
-            </h1>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-            <h3 class="sec-tit">
-              10가지 질문으로<br />
-              알아보는 내 이미지
-            </h3>
-            <span class="time-logo"></span>
-            <div>소요 시간 : 3분 내외</div>
-          </div>
-          <hr class="w-line" />
-          <p class="w-line">
-            <span id="p-tit">이 테스트로 당신은...</span><br />
-            타인이 보는 당신의 이미지를 알 수 있습니다.<br />
-            현대인에게 자신의 장단점을 제대로 알고 이미지를 관리하는 것은
-            성공적인 사회 생활과 좋은 평판을 얻기 위해 필수적입니다. 테스트
-            결과로 사람들이 보는 당신의 이미지와 그 강점을 알아보세요!
-          </p>
-          <hr class="w-line" />
-          <div id="name-input">
-            <input
-              type="text"
-              placeholder="이름"
-              name="playlist_name"
-              id="playlist_name"
-              autofocus
-            />
-            <!-- <button id="playlist_name_start" >중복 확인</button> -->
-          </div>
-          <input type = "hidden" id = "valid_temp" value = "{{pl_lst}}"></input>
-          <p class="check-name warning"></p>
-          <div class="start-wrap">
-            <button class="start">시 작</button>
-          </div>
-        </section>
-        <section id="qna" class="container">
-          <div class="status-bar">
-            <div class="status"></div>
-          </div>
-          <div class="q box"></div>
-          <div class="answer"></div>
-        </section>
-        <section id="calc">
-          <div class="calc-bar">
-            CALCULATING
-            <div class="calc"></div>
-          </div>
-          <p class="wait">잠시 기다려주세요...</p>
-        </section>
-
-        <section id="result" class="container">
-          <div id="score-box">
-            <div class="p title"></div>
-            <input class="point" name="playlist_point" type="hidden" />
-            <div class="pin"></div>
-            <div class="score-bar"></div>
-          </div>
-          <div id="desc-box">
-            <div class="art"></div>
-            <div class="result title"></div>
-            <div class="res desc"></div>
-          </div>
-          <hr />
-          <div class="caution">
-            <p>
-              사람은 서로 조금씩 달라서 6가지 이미지에 꼭 맞기는 어렵습니다.
-              결과가 조금 맞지 않더라도 이런 면이 있음을 알고 강점에 주목해
-              보세요. 좋은 평판은 어느새 당신의 단짝이 되어 있을 겁니다!<br /><br />
-              테스트가 재밌었다면
-            </p>
-            <p>
-              음악에 색을 입히러 가볼까요?
-
-              <button
-                type="submit"
-                data-aos="fade-up"
-                class="btn-get-started scrollto"
-                id="go_main1"
-              >
-                GO
-              </button>
-            </p>
-          </div>
-          <hr />
-          <div class="caution">
-            <p>
-              이 테스트는 해외 웹사이트에 게재된 이미지 테스트를 한국어로 번역한
-              것입니다.<br />(원본 아래 참고)<br />
-            </p>
-          </div>
-          <hr />
-          <button class="go-origin btn">
-            <a
-              href="https://www.personalityquiz.net/profiles/impressions.html"
-              target="_blank"
-              title="출처 영문 웹사이트"
-            >
-              출처 영문 웹사이트 보기
-            </a>
-          </button>
-        </section>
-        <footer id="footer">
-          <div>
-            <span class="highlight">HUIYEOL</span>
-            © 2022
-          </div>
-          <a
-            href="https://github.com/ProjectHuiyeol"
-            target="_blank"
-            title="개발자 깃허브"
-          >
-            <div class="logo foot github"></div>
-          </a>
-          <a
-            href="https://www.notion.so/402ec9268f0141f682a64edcaf4f04d6"
-            target="_blank"
-            title="개발자 노션"
-          >
-            <div class="logo foot tistory"></div>
-          </a>
-        </footer>
+  <link rel="shortcut icon" type="text/css" href="../static/assets/img/favicon.png">
+  <link rel="appel-touch-icon-precomposed" href="../static/assets/img/favicon.png">
+  <title>
+    나를 알아보는 10가지 질문
+  </title>
+  <link rel="stylesheet" href="../static/assets/css/reset.css">
+  <link rel="stylesheet" href="../static/assets/css/animation.css">
+  <link rel="stylesheet" href="../static/assets/css/main.css">
+  <link rel="stylesheet" href="../static/assets/css/header+footer.css">
+  <link rel="stylesheet" href="../static/assets/css/welcome.css">
+  <link rel="stylesheet" href="../static/assets/css/qna.css">
+  <link rel="stylesheet" href="../static/assets/css/calc.css">
+  <link rel="stylesheet" href="../static/assets/css/result.css">
+</head>
+<form action = "/main1" method="GET">
+<body>
+  <div id="wrap">
+    <header id="header">
+      <button class="logo head" onclick=javascript:switchMode()></button>
+    </header>
+    <section id="welcome" class="container">
+      <div id="title-box">
+        <h1 class="title">
+          10 Things<br>
+          I Know About You
+        </h1>
+  
+        <h3 class="sec-tit">
+          10가지 질문으로<br>
+          알아보는 내 이미지
+        </h3>
+        <span class="time-logo"></span>
+        <div>소요 시간 : 3분 내외</div>
       </div>
+      <hr class="w-line">
+      <p class="w-line">
+        <span id="p-tit">이 테스트로 당신은...</span><br>
+        타인이 보는 당신의 이미지를 알 수 있습니다.<br>
+        현대인에게 자신의 장단점을 제대로 알고 이미지를 관리하는 것은
+        성공적인 사회 생활과 좋은 평판을 얻기 위해 필수적입니다.
+        테스트 결과로 사람들이 보는 당신의 이미지와 그 강점을 알아보세요!
+      </p>
+      <hr class="w-line">
+      <div id="name-input">
+        <input type="text" placeholder="이름" name = "playlist_name" id = "playlist_name" autofocus>
+        <!-- <button id="playlist_name_start" >중복 확인</button> -->
+      </div>
+      <input type = "hidden" id = "valid_temp" value = "{{pl_lst}}"></input>
+      <p class="check-name warning"></p>
+      <div class="start-wrap">
+        <button class="start" >시 작</button>
+      </div>
+    </section>
+    <section id="qna" class="container">
+      <div class="status-bar">
+        <div class="status"></div>
+      </div>
+      <div class="q box"></div>
+      <div class="answer"></div>
+    </section>
+    <section id="calc">
+      <div class="calc-bar">
+        CALCULATING
+        <div class="calc"></div>
+      </div>
+      <p class="wait">잠시 기다려주세요...</p>
+    </section>
+    
+    <section id="result" class="container">
+      <div id="score-box">
+        <div class="p title"></div>
+        <input class="point" name = 'playlist_point' type='hidden'/>
+        <div class="pin"></div>
+        <div class="score-bar"></div>
+      </div>
+      <div id="desc-box">
+        <div class="art"></div>
+        <div class="result title"></div>
+        <div class="res desc"></div>
+      </div>
+      <hr>
+      <div class="caution">
+        <p>
+          사람은 서로 조금씩 달라서 6가지 이미지에 꼭 맞기는 어렵습니다.
+          결과가 조금 맞지 않더라도 이런 면이 있음을 알고 강점에 주목해 보세요.
+          좋은 평판은 어느새 당신의 단짝이 되어 있을 겁니다!<br><br>
+          테스트가 재밌었다면
+        </p>
+        <p>
+          음악에 색을 입히러 가볼까요?
+          
+          <button type = "submit" data-aos="fade-up" class="btn-get-started scrollto" id = "go_main1"> GO </button>
+        </p>
+      </div>
+      <hr>
+      <div class="caution">
+        <p>
+          이 테스트는 해외 웹사이트에 게재된 이미지 테스트를 한국어로 번역한 것입니다.<br>(원본 아래 참고)<br>
+        </p>
+      </div>
+      <hr>
+      <button class="go-origin btn">
+        <a href="https://www.personalityquiz.net/profiles/impressions.html" target="_blank" title="출처 영문 웹사이트">
+          출처 영문 웹사이트 보기
+        </a>
+      </button>
+    </section>
+    <footer id="footer">
+      <div>
+        <span class="highlight">HUIYEOL</span>
+        © 2022
+      </div>
+      <a href="https://github.com/ProjectHuiyeol" target=_blank title="개발자 깃허브">
+        <div class="logo foot github"></div>
+      </a>
+      <a href="https://www.notion.so/402ec9268f0141f682a64edcaf4f04d6" target=_blank title="개발자 노션">
+        <div class="logo foot tistory"></div>
+      </a>
+    </footer>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="../static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script src="../static/assets/js/darkmode.js"></script>
+  <!-- <script src="../static/assets/js/data.js"></script>
+  <script src="../static/assets/js/psych_test.js"></script> -->
+  <script src="../static/assets/js/colorData.js"></script>
+  <script src="../static/assets/js/colorTest.js"></script>
+  <script src="../static/assets/js/main.js"></script>
 
-      <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-      <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
-      <script src="../static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
-      <script src="../static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-      <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <script src="../static/assets/vendor/php-email-form/validate.js"></script>
-      <script src="../static/assets/vendor/venobox/venobox.min.js"></script>
-      <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-      <script src="../static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-      <script src="../static/assets/vendor/aos/aos.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-      <script src="../static/assets/js/darkmode.js"></script>
-      <script src="../static/assets/js/colorData.js"></script>
-      <script src="../static/assets/js/colorTest.js"></script>
-      <script src="../static/assets/js/main.js"></script>
-    </body>
-  </form>
+</body>
+</form>
 </html>

@@ -1,5 +1,6 @@
 from model.sql_connect import *
 import numpy as np
+import pandas as pd
 class Song():
     def __init__(self, data):
         self.song_id_list = []
@@ -51,6 +52,20 @@ class Song():
             return song_title_list
         except:
             return None
+
+    @staticmethod
+    def get_custom_song_lyrics(song_ids):
+        song_id_lyrics = []
+        for song_id in song_ids:
+            mysql_db = conn_mysqldb()
+            db_cursor = mysql_db.cursor()
+            sql = "select `song_db`.`song_info_lyrics`.`song_id`,`song_db`.`song_info_lyrics`.`song_lyrics` from `song_db`.`song_info_lyrics` where `song_db`.`song_info_lyrics`.`song_id` = %s;" %(song_id)
+            db_cursor.execute(sql)
+            data = db_cursor.fetchone()
+            song_id_lyrics.append(data)
+        if not song_id_lyrics:
+            return None
+        return song_id_lyrics
 
     @staticmethod
     def get_song(string):
@@ -115,3 +130,17 @@ class Song():
 
             temp.append(a)
         return list(np.array(temp)/len(sentiments_lst))
+
+    @staticmethod
+    def get_custom_lyrics(song_ids):
+        lyrics_list = []
+        for song_id in song_ids:
+            mysql_db = conn_mysqldb()
+            db_cursor = mysql_db.cursor()
+            sql = '''select song_lyrics from song_info_lyrics where song_id = %d;''' %(song_id)
+            db_cursor.execute(sql)
+            data = db_cursor.fetchone()[0]
+            lyrics_list.append(data[2:])
+        if not lyrics_list:
+            return None
+        return lyrics_list

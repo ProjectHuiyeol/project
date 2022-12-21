@@ -80,7 +80,7 @@ const qnaList = [
     a: [
       { answer: 'a. 천장을 보고 똑바로 눕는다', score: [0, 10, 0] },
       { answer: 'b. 배를 바닥에 깔고 엎드린다', score: [10, 0, 0] },
-      { answer: 'e. 머리 끝까지 이불을 덮는다', score: [0, 0, 10] }
+      { answer: 'c. 머리 끝까지 이불을 덮는다', score: [0, 0, 10] }
     ]
   },
   {

@@ -207,8 +207,8 @@ class EmotionClassfier():
         data['senti'] = ''
         for id in song_ids:
             sc, se = pred[id]
-            data.loc[data[data['SONG_ID']==id].index, 'score'] = str(sc)
-            data.loc[data[data['SONG_ID']==id].index, 'senti'] = se
+            data.loc[data[data['SONG_ID']==id].index[0], 'score'] = str(sc)
+            data.loc[data[data['SONG_ID']==id].index[0], 'senti'] = se
         # 5분류
         neg_data = data[data['senti']=='neg']
         pos_data = data[data['senti']=='pos']
@@ -228,8 +228,8 @@ class EmotionClassfier():
         data['total'] = ''
         for key in neg_ids:
             sc, se = neg_pred[key]
-            data.loc[data[data['SONG_ID']==key].index, 'final_score'] = str(sc)
-            data.loc[data[data['SONG_ID']==key].index, 'final_senti'] = se
+            data.loc[data[data['SONG_ID']==key].index[0], 'final_score'] = str(sc)
+            data.loc[data[data['SONG_ID']==key].index[0], 'final_senti'] = se
         # neg인 경우의 감정 지표 계산
         for key in neg_ids:
             neg_sc = np.fromstring(data.loc[data[data['SONG_ID']==key].index, 'final_score'].tolist()[0][1:-1], dtype=float, sep=' ')
@@ -260,5 +260,5 @@ class EmotionClassfier():
         data = data.drop(data[data['senti']=='neut'].index)
         return data
 # 모델 실행
-model = EmotionClassfier(le,neg_le)
-model.call()
+electra_model = EmotionClassfier(le,neg_le)
+electra_model.call()

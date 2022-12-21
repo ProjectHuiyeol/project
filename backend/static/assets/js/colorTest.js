@@ -114,7 +114,7 @@ const sortResult = (point) => {
     r = Math.sqrt(Math.pow(color[i][0] - point[0], 2))
     g = Math.sqrt(Math.pow(color[i][1] - point[1], 2))
     b = Math.sqrt(Math.pow(color[i][2] - point[2], 2))
-    // property.push(r + g + b)
+    property.push(r + g + b)
   }
   let colorMin = Math.min(...property)
   // console.log(property, colorMin)
@@ -138,8 +138,9 @@ const sortResult = (point) => {
   // } else {
   //   num = 5
   // }
-
-  return num
+  let colorValue = color[num]
+  console.log(colorValue);
+  return [num, colorValue]
 }
 
 const goResult = () => {
@@ -153,12 +154,17 @@ const goResult = () => {
 
   const result = document.getElementById('result')
   const point = calcScore()
-  const grade = sortResult(point)
+  const res_sort = sortResult(point)
+  const grade = res_sort[0] 
+  const colorvalue = res_sort[1]
+  console.log(res_sort);
   const pTitle = document.querySelector('.p')
   const res_point = document.querySelector('.point')
-  const pin = document.querySelector('.pin')
+  const colorvalue_input = document.querySelector('.colorvalue')
+  // const pin = document.querySelector('.pin')
   const img_url = '../static/assets/img/image-' + grade + '.jpg'
   const res_img = document.createElement('img')
+  colorvalue_input.value = colorvalue
   const res_img_div = document.querySelector('.art')
   const animal = document.querySelector('.result')
   const desc = document.querySelector('.res')
@@ -166,11 +172,13 @@ const goResult = () => {
   pTitle.innerHTML = u_name.value + ' 님의 테스트 결과는...'
   res_point.value = point
   // console.log(res_point);
-  pin.style.marginLeft = infoList[grade].mLeft
+  // pin.style.marginLeft = infoList[grade].mLeft
   res_img.src = img_url
   res_img.alt = infoList[grade].name
   res_img.title = infoList[grade].name
   res_img_div.appendChild(res_img)
+  res_img_div.style.width = '90%'
+  res_img_div.style.height = '100%'
   animal.innerHTML = infoList[grade].name
   desc.innerHTML = infoList[grade].desc
 
@@ -311,12 +319,11 @@ const load = () => {
   start_btn.addEventListener('click', () => {
     try {
       if (u_name.value.length < 1) {
+        start_btn.disabled = true
         throw '이름을 입력하고 시작해 주세요.'
-      } else if (valid_temp.value.includes(u_name.value)) {
-        throw '플레이리스트 이름이 중복됩니다.'
       }
       msg.innerHTML = ''
-      start_btn.disabled = true
+      
       begin()
     } catch (err) {
       msg.innerHTML = err

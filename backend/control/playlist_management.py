@@ -18,13 +18,19 @@ class Playlist():
     def make_new_playlist(playlist_name, ratio):
         mysql_db = conn_mysqldb()
         db_cursor = mysql_db.cursor()
-        sql = "INSERT INTO playlist_info (PLAYLIST_NAME, PLAYLIST_RATIO) VALUES ('%s', '%s')" % (str(playlist_name), str(ratio))
+        sql = "SELECT * FROM playlist_info WHERE playlist_name='%s'" % (str(playlist_name))
         db_cursor.execute(sql)
-        try:
-            mysql_db.commit()
-            print('commit')
-        except:
-            print('error')
+        is_in = db_cursor.fetchall()
+        if not is_in:
+            sql = "INSERT INTO playlist_info (PLAYLIST_NAME, PLAYLIST_RATIO) VALUES ('%s', '%s')" % (str(playlist_name), str(ratio))
+            db_cursor.execute(sql)
+            try:
+                mysql_db.commit()
+                print('commit')
+            except:
+                print('error')
+        else:
+            print('duplicate playlist')
     
     @staticmethod
     def valid_playlist():
@@ -51,17 +57,18 @@ class Playlist():
     def delete_playlist(playlist_name):
         mysql_db = conn_mysqldb()
         db_cursor = mysql_db.cursor()
-        playlist_id = Playlist.get_playlist_id(playlist_name)[0][0]
-        
-        sql = "DELETE FROM playlist WHERE PLAYLIST_ID = '%s'" % (str(playlist_id))
-        db_cursor.execute(sql)
-        sql = "DELETE FROM playlist_info WHERE PLAYLIST_NAME = '%s'" % (str(playlist_name))
-        db_cursor.execute(sql)
-        try:
-            mysql_db.commit()
-            print('commit')
-        except:
-            print('error')
+        playlist_id = Playlist.get_playlist_id(playlist_name)
+        if playlist_id :
+            playlist_id = Playlist.get_playlist_id(playlist_name)[0][0]
+            sql = "DELETE FROM playlist WHERE PLAYLIST_ID = '%s'" % (str(playlist_id))
+            db_cursor.execute(sql)
+            sql = "DELETE FROM playlist_info WHERE PLAYLIST_NAME = '%s'" % (str(playlist_name))
+            db_cursor.execute(sql)
+            try:
+                mysql_db.commit()
+                print('commit')
+            except:
+                print('error')
     
     @staticmethod
     def get_playlist_id(playlist_name=None):

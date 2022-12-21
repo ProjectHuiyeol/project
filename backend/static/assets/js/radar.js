@@ -3,15 +3,15 @@
     // sound_score
     var sound_happy = document.querySelector('#sound_sentiment0').value;
     var sound_sad = document.querySelector('#sound_sentiment1').value;
-    var sound_angry = document.querySelector('#sound_sentiment2').value;
-    var sound_relaxed = document.querySelector('#sound_sentiment3').value;
+    var sound_relaxed = document.querySelector('#sound_sentiment2').value;
+    var sound_angry = document.querySelector('#sound_sentiment3').value;
     // lyrics_score
     var lyrics_happy = document.querySelector('#lyrics_sentiment0').value;
-    var lyrics_fear = document.querySelector('#lyrics_sentiment1').value;
-    var lyrics_angry = document.querySelector('#lyrics_sentiment2').value;
-    var lyrics_dislike = document.querySelector('#lyrics_sentiment3').value;
-    var lyrics_surprise = document.querySelector('#lyrics_sentiment4').value;
-    var lyrics_sad = document.querySelector('#lyrics_sentiment5').value;
+    var lyrics_angry = document.querySelector('#lyrics_sentiment1').value;
+    var lyrics_dislike = document.querySelector('#lyrics_sentiment2').value;
+    var lyrics_fear = document.querySelector('#lyrics_sentiment3').value;
+    var lyrics_sad = document.querySelector('#lyrics_sentiment4').value;
+    var lyrics_surprise = document.querySelector('#lyrics_sentiment5').value;
     
     // sound_color
     var red_sound_calc = parseFloat(253*sound_happy +  179*sound_angry  + 82*sound_sad + 82*sound_relaxed);
@@ -29,7 +29,7 @@
     var sound_radarChart = new Chart(ctx, {
       type: 'radar',
       data: {
-        labels: ["HAPPY", "SAD", "ANGRY", "RELAXED"],
+        labels: ["HAPPY", "ANGRY", "SAD", "RELAXED"],
         datasets: [
           {
             label: "SOUND",
@@ -38,7 +38,7 @@
             borderColor: "rgba("+red_sound_calc+","+green_sound_calc+","+blue_sound_calc+",1)",
             pointBorderColor: "#fff",
             pointBackgroundColor: "rgba("+red_sound_calc+","+green_sound_calc+","+blue_sound_calc+",1)",
-            data: [sound_happy,sound_sad,sound_angry,sound_relaxed]
+            data: [sound_happy,sound_angry,sound_sad,sound_relaxed]
           }
         ]
       },

@@ -31,3 +31,10 @@ def main2_():
         return render_template('index.html')
     all_songlist = Song.get_all_song()
     return render_template('main1.html',playlist_name =name, all_songlist = all_songlist)
+
+@mainlogo.route('/delete<playlist_name>')
+def delete_playlist(playlist_name):
+    
+    Playlist.delete_playlist(playlist_name)
+    pl_list = Playlist.call_playlist()
+    return render_template('index.html',pl_list = pl_list)

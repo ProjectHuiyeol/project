@@ -53,10 +53,10 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto,
+  --bs-font-sans-serif: 'GmarketSansMedium', system-ui, -apple-system, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  --bs-font-monospace: 'GmarketSansMedium', SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
   --bs-gradient: linear-gradient(
     180deg,
@@ -73,10 +73,18 @@
   --bs-body-bg: #fff;
 }
 
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: 'GmarketSansMedium';
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -124,7 +132,7 @@ h1,
 .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: 'Newsreader', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  font-family: 'GmarketSansMedium', 'Newsreader', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-weight: 600;
@@ -347,6 +355,7 @@ caption {
   padding-bottom: 0.5rem;
   color: #6c757d;
   text-align: left;
+  font-family: 'GmarketSansMedium';
 }
 
 th {
@@ -418,17 +427,32 @@ select:disabled {
   width: 250px;
   height: 200px;
   margin: auto;
+  border-radius: 10px;
+}
+
+.sub_container::-webkit-scrollbar {
+  width: 6px;
+  background: aliceblue;
+}
+
+.sub_container::-webkit-scrollbar-thumb {
+  height: 20%;
+  background: #217af4;
+  border-radius: 10px;
+}
+
+.sub_container::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
 }
 
 .column_1st_tag,
 .column_2nd_tag,
 .column_playlist {
   flex-basis: 20%;
-  background: #ddd;
+  background: #72b6f2;
   min-height: 70vh;
   padding: 5px;
-  border-radius: 10px;
-  margin-bottom: 15px;
+  border-radius: 5px;
 }
 .trash_can {
   flex-basis: 20%;
@@ -444,9 +468,11 @@ select:disabled {
 }
 .list-group-item {
   background: #fff;
+  min-height: 60px;
   margin: 20px;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
+  line-height: 42px;
   cursor: pointer;
 }
 button,
@@ -12031,11 +12057,14 @@ section.cta {
   background-position: center;
   background-size: cover;
   vertical-align: middle;
+  text-align: center;
+  justify-content: center;
 }
 section.cta .cta-content {
   position: relative;
   z-index: 1;
   text-align: center;
+  justify-content: center;
 }
 section.cta:before {
   content: '';
@@ -12044,7 +12073,8 @@ section.cta:before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(114, 182, 242, 0.3);
+  justify-content: center;
+  background: aliceblue;
 }
 
 .icon-feature {
@@ -12163,7 +12193,7 @@ footer a:focus {
 }
 
 .masthead {
-  background-color: #f8f9fa;
+  background-color: #2893ef;
   padding-top: 9.5rem;
   padding-bottom: 5rem;
 }
@@ -12256,6 +12286,7 @@ table {
 }
 th,
 td {
+  text-align: center;
   padding: 10px;
   /* border-bottom: 1px solid #2893ef; */
 }
@@ -12291,8 +12322,8 @@ td {
 
 .btn-12 {
   position: relative;
-  right: 20px;
-  bottom: 20px;
+  right: 12.5px;
+  bottom: 15px;
   border: none;
   width: 200px;
   height: 50px;
@@ -12360,7 +12391,7 @@ td {
 }
 
 .outer-slide {
-  width: 1071px;
+  width: 1300px;
   height: auto;
   margin: 0 auto;
   overflow-x: hidden;

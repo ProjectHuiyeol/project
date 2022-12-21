@@ -30,98 +30,70 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Features</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Download</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Services</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#download">About</a></li>
                     </ul>
                     <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
                             <i class="bi-chat-text-fill me-2"></i>
-                            <span class="small">Send Feedback</span>
+                            <span class="small">Contact</span>
                         </span>
                     </button>
                 </div>
             </div>
         </nav>
-
-        <!-- ======= All music Section ======= -->
-    <section id="all_music" class="all_music" >
-        <div class="container">
-          <div class="section-title" data-aos="fade-up">
-            <h1><strong>전체 음원</strong></h1>
-          </div>
-          
-          <div class="input-group">
-            <input
-              type="search"
-              class="form-control rounded"
-              placeholder="Search"
-              aria-label="Search"
-              aria-describedby="search-addon"
-            />
-            <button type="button" class="btn btn-outline-primary">search</button>
-          </div>
-        </div>
-      </section>
-      <!-- <section>
-        <h1>전체 음원</h1>
-        <h1>기존 곡</h1>
-        <h1>my playlist</h1>
-        <h1>trashcan</h1>
-      </section> -->
-      <!-- <div class ="container">
-
-      </div> -->
-      <div class="container">
-        <div>
-          <h1 style = "text-align: center;">전체 음원</h1>
-          <div class = "sub_container" style="overflow: auto;">
-            <!-- <h1>전체 음원</h1> -->
-            
-            <div class="column_1st_tag">
-              {% for song in all_songlist %}
-                <div class="list-group-item" draggable="true" name = "songlist">{{song[1]}}</div>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-        <div>
-          <h1>기존 곡</h1>
-          <div class = "sub_container" style = "overflow: auto;">
-            <div class="column_2nd_tag">
-              {% if song_title_list %}
-                {% for song_title in song_title_list %}
-                  <div class="list-group-item" draggable="true">{{song_title[0]}}</div>
+      <section style="align-items: center;">
+      <div class="container" style="width: 1295px; padding-top: 80px;">
+        <div class="row">
+          <div class="col-md-4">
+            <h1 style = "text-align: center;">전체 음원</h1>
+            <div class = "sub_container" style="overflow: auto; width:350px;height:500px; border-radius: 10px;">
+              <div class="column_1st_tag" style="background-color: #72b6f2;">
+                {% for song in all_songlist %}
+                  <div class="list-group-item" draggable="true" name = "songlist">{{song[1]}}</div>
                 {% endfor %}
-              {% else %}
-                <div class = "list-group-item" draggable="false">등록된 곡이 없습니다.</div>
-              {% endif %}
+              </div>
             </div>
           </div>
-        </div>
-        
-      <form action = "{{url_for('main1.song_info', songlist=song_list)}}" method = 'GET'>
-        <input type="hidden" id="song_names" name = "song_names">{{song_list}}</input>
-        <input type="hidden" id ="playlist_name" name = "pl_name" value="{{playlist_name}}"></input>
-        <div>
-          <h1>my playlist</h1>  
-          <div class = "sub_container" style="overflow: auto;">
-            <div class="column_playlist">
+          <div class="col-md-4">
+            <h1 style = "text-align: center;">기존 곡</h1>
+            <div class = "sub_container" style="overflow: auto;width:350px; height:500px;">
+              <div class="column_2nd_tag">
+                {% if song_title_list %}
+                  {% for song_title in song_title_list %}
+                    <div class="list-group-item" draggable="true">{{song_title[0]}}</div>
+                  {% endfor %}
+                {% else %}
+                  <div class = "list-group-item" draggable="false">등록된 곡이 없습니다.</div>
+                {% endif %}
+              </div>
             </div>
           </div>
-          <button type="submit" class = 'btn btn-outline-primary' id = "add_playlist_btn" style="float: right;">추가</button>
-        </div>
-      </form>
-      <div>
-        <h1>trashcan</h1>
-        <div class = "sub_container" style="overflow: auto;">
-          <div class = "trash_can">
+          <div class="col-md-4" style="text-align: center;">
+            <form action = "{{url_for('main1.song_info', songlist=song_list)}}" method = 'GET'>
+              <input type="hidden" id="song_names" name = "song_names">{{song_list}}</input>
+              <input type="hidden" id ="playlist_name" name = "pl_name" value="{{playlist_name}}"></input>
+              <div class="row">
+                <div>
+                  <h1 style = "text-align: center;">my playlist</h1>
+                  <div class = "sub_container" style="overflow:  auto; width:350px;height:500px;">
+                    <div class="column_playlist">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <a href="{{url_for('mainlogo.delete_playlist',playlist_name=playlist_name)}}"><button type = "button" class = 'btn btn-outline-primary' style="float: right;">삭제</button></a>
+                  <button type="submit" class = 'btn btn-outline-primary' id = "add_playlist_btn" style="float: right;">추가</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
      </div>
-  
+    </section>
       <!-- End All music Section -->
-
             <!-- Vendor JS Files -->
     <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
     <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -134,6 +106,7 @@
     <script src="../static/assets/vendor/aos/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" integrity="sha512-zYXldzJsDrNKV+odAwFYiDXV2Cy37cwizT+NkuiPGsa9X1dOz04eHvUWVuxaJ299GvcJT31ug2zO4itXBjFx4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../static/assets/js/loadingoverlay.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="../static/assets/js/main.js"></script>

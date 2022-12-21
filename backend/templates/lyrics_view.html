@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <!-- <style type="text/css">
+        *, ::before, ::after { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body { margin: 0; }
+
+        .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;border-style:solid;border-width:1px;}
+        .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:0px;color:#444;
+        font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg th{background-color:#409cff;border-color:#9ABAD9;border-style:solid;border-width:0px;color:#fff;
+        font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg .tg-9gjn{border-color:inherit;font-family:"Lucida Console", Monaco, monospace !important;font-weight:bold;text-align:left;
+        vertical-align:top}
+        .tg .tg-7ny5{background-color:#D2E4FC;border-color:inherit;font-family:"Lucida Console", Monaco, monospace !important;
+        font-weight:bold;text-align:left;vertical-align:top}
+
+        .slide { position: relative; height: 100%; overflow: hidden; }
+    
+        .slide .slide-view > div { display: flex; }
+        .slide .slide-view .slide-view-item { flex: 0 0 100%; }
+        
+        </style> -->
+        <div class="slide_view" >
+            <div class="slide-view" >
+                <div>
+                    <div class="slide-view-item">
+                        <div style="padding: .43em 0em .35em .7em; margin: 2em 0; font-weight: bold; color: #232323; background: #E4FCFF; border-left: solid 10px #1DC1D6;">
+                            <caption>노래 가사보기</caption>
+                        </div>
+                        
+
+                        <div style="padding: 0em 2em; margin: 2em 10px; font-weight: bold; color: #565656; background: #E4FCFF; box-shadow: 0px 0px 0px 10px #E4FCFF; border: dashed 2px #1DC1D6; border-radius: 8px;">
+                            <p id = "lyrics_full">{{custom_lyrics}}</p>
+                        </div>
+                    </div>
+                   
+
+                </div>
+            </div>
+         
+        </div>
+        <script>
+            !function() {
+                const slide = document.querySelector('.slide_view');
+                const slideContent = slide.querySelector('.slide-view > div');
+                
+                const state = {
+                    index: 0,
+                    idle: true,
+                    duration: 300,
+                };
+            }();
+        </script>
+    </body>
+
+</html>

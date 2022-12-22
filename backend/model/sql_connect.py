@@ -10,12 +10,12 @@ import pymysql
 #     charset='utf8'
 # )
 
-MYSQL_HOST = 'database-1.cqxqtis1gqjp.ap-northeast-1.rds.amazonaws.com'
+MYSQL_HOST = ''
 MYSQL_CONN = pymysql.connect(
     host=MYSQL_HOST,
     port=3306,
-    user='huiyeol',
-    passwd='gmlduf0000',
+    user='',
+    passwd='',
     db='song_db',
     charset='utf8'
 )
